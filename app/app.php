@@ -35,11 +35,11 @@
 		<div class="row">
 			<div class="user__panel  <?php echo "mod-{$mod}"; echo " del-{$del}"; ?>">
 				<div class="user__perfil">
-					<div class="user__avatar">
+					<!-- <div class="user__avatar">
 						<figure class="user__figure">
 							<img src="temp/perfil.jpg" alt="">
 						</figure>
-					</div>
+					</div> -->
 					<div class="user__name">
 						<?php echo $_SESSION['username']; ?>
 					</div>

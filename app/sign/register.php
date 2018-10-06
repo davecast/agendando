@@ -39,7 +39,7 @@
         
         if ( isset($_REQUEST['registerEmail']) and strlen($_REQUEST['registerEmail']) != 0 ) {
             $emailIsset = false;
-            if (validateEmail($_REQUEST['registerEmail'])) {
+            if (isValidEmail($_REQUEST['registerEmail'])) {
                 $email = $_REQUEST['registerEmail'];
                 $url .= "&email={$email}";
             } else {
@@ -70,45 +70,39 @@
             $url .= "&errRePass={$err}";
         }
 
-        
         if ($err == 0) {
             
-            // $name = $_REQUEST[''];
-            // $email = $_REQUEST['registerEmail'];
-            // $pass = $_REQUEST['registerPass'];
-            // $repass = $_REQUEST['registerRePass'];
-            // $avatar = "https://lorempixel.com/640/640/people/?". rand(1, 1000);
-            // $token = bin2hex(random_bytes(64));
+            $avatar = "https://lorempixel.com/640/640/people/?". rand(1, 1000);
+            $token = bin2hex(random_bytes(64));
             
-            // if ($pass == $repass) {
-            //     $sql = "SELECT * FROM users WHERE username='$username' OR email='$email'";
-            //     $result = selectDataBase($sql);
+            if ($pass == $repass) {
+                $sql = "SELECT * FROM users WHERE username='$username' OR email='$email'";
+                $result = selectDataBase($sql);
                 
-            //     if ($result->num_rows > 0) {
-            //         $err = '3';
-            //         header("Location: {$URL_PATH}index.php?err={$err}&type=signUp");
-            //     } else {
+                if ($result->num_rows > 0) {
+                    $err = '3';
+                    header("Location: {$URL_PATH}index.php?err={$err}&type=signUp");
+                } else {
                     
-            //         $pass = password_hash($pass, PASSWORD_DEFAULT);
-            //         $sql = "INSERT INTO users (id_user, name, username, email, password, token, avatar) VALUES (NULL, '$name', '$username', '$email', '$pass', '$token', '$avatar')";
-            //         $result = insertDataBase($sql);
+                    $pass = password_hash($pass, PASSWORD_DEFAULT);
+                    $sql = "INSERT INTO users (id_user, name, username, email, password, token) VALUES (NULL, '$name', '$username', '$email', '$pass', '$token')";
+                    $result = insertDataBase($sql);
 
-            //         $_SESSION['id_user'] = $result;
-            //         $_SESSION['name'] = $name;
-            //         $_SESSION['username'] = $username; 	
-            //         $_SESSION['email'] = $email;	
-            //         $_SESSION['token'] = $token;
-            //         $_SESSION['avatar'] = $avatar;
+                    $_SESSION['id_user'] = $result;
+                    $_SESSION['name'] = $name;
+                    $_SESSION['username'] = $username; 	
+                    $_SESSION['email'] = $email;	
+                    $_SESSION['token'] = $token;
+                    $_SESSION['avatar'] = $avatar;
 
-            //         header("Location: {$URL_PATH}index.php");
-            //     }
-            // } else {
-            //     $err = '2';
-            //     header("Location: {$URL_PATH}index.php?err={$err}&type=signUp");
-            // }
+                    header("Location: {$URL_PATH}index.php");
+                }
+            } else {
+                $err = '2';
+                header("Location: {$URL_PATH}index.php?err={$err}&type=signUp");
+            }
             
         } else {
-            echo $url;
             header("Location: {$url}");
         }
 

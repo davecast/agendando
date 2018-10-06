@@ -37,7 +37,7 @@
 	function insertDataBase ($sql) {
         $conect = conection();
 
-        $conect->query($sql) or die ( "<br>No se puede ejecutar query para insertar datos ". $mysqli->error );
+        $conect->query($sql) or die ( "<br>No se puede ejecutar query para insertar datos ". $conect->error );
 
         $id = $conect->insert_id;
         
@@ -52,7 +52,7 @@
 	function deleteDataBase ($sql) {
         $conect = conection();
 
-        $result = $conect->query($sql) or die ( "<br>No se puede ejecutar query para eliminar datos". $mysqli->error);
+        $result = $conect->query($sql) or die ( "<br>No se puede ejecutar query para eliminar datos". $conect->error);
 
         if ($result === TRUE) {    
             $conect->close();

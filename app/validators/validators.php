@@ -33,7 +33,11 @@
     function validateDescription ($str) {
         return preg_match("/^[a-z0-9ñÑáéíóúÁÉÍÓÚ \.\,]*$/i", $str );
     }
+    function isValidEmail($email){ 
+        return filter_var($email, FILTER_VALIDATE_EMAIL) !== false;
+    }
     function validateEmail ($email) {
+        
         return preg_match("^([a-z0-9_-])+([\.a-z0-9_-])*@([a-z0-9-])+(\.[a-z0-9-]+)*\.([a-z]{2,6})$", $email);
     }
     function validateAlfaNumeric ($text) {
