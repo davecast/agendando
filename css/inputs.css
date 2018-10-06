@@ -1,0 +1,112 @@
+.input__box {
+	position: relative;
+}
+.input__box--file .label__file {
+	color: #757575;
+	border:1px solid #ccc;
+    font-size: .9em;
+    transition: all .4s;
+    width: 100%;
+    display: block;
+    border-radius: 5px;
+    padding: 13px 10px 12px;
+	cursor: pointer;
+	font-family: Arial;
+}
+.input__box--file input:hover + label {
+	background: #c13234;
+	color:#fff;
+}
+.input__box--file .input__file{
+	position: absolute;
+	display: inline-block;
+	left: 0;
+	top: 0;
+	opacity: 0.01;
+	cursor: pointer;
+	height: 0px;
+    cursor: pointer;
+    overflow: hidden;
+    width: 0px;
+}
+
+.input__box.input__box--half {
+	width: 49%
+}
+.input__box.input__box--first {
+	margin-right: 2%;
+}
+.input {
+	width: 100%;
+	height: 40px;
+	border-radius: 5px;
+	border: 2px solid transparent;
+	padding: 0px 10px;
+	color: #495057;
+	font-size: 14px;
+}
+.input.textarea {
+	height: auto;
+    resize: none;
+    padding: 10px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.input:focus {
+	outline:0px;
+}
+.input + span {
+	visibility: hidden;
+	opacity: 0;
+	height: 0;
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	right: 0;
+	border: 2px solid transparent;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	user-select: none;
+	cursor: text;
+	transition: opacity 0.6s ease;
+}
+.input--visible + span {
+	visibility: visible;
+	display: inline;
+	opacity: 1;
+	height: 40px;
+	line-height: 40px;
+	font-size: 10px;
+	padding: 0px 10px;
+	font-weight: bold;
+	letter-spacing: 0.5px;
+}
+.input--warning {
+	border: 2px solid #ffc107;
+	color: #ffc107;
+}
+.input--warning + span {
+	background: #fff8e1;
+	border-color: #ffc107;
+	color: #ffc107;
+}
+.input--danger {
+	border: 2px solid #a22222;
+	color: #a22222;
+}
+.input--danger + span {
+	background: #ef8f8f;
+	border-color: #a22222;
+	color: #a22222;
+}
+.input--sussess {
+	border: 2px solid #28a745;
+	background: #def7e4;
+	color: #28a745;
+}
+.input--sussess + span {
+	display: none;
+}
+.input--big {font-size: 16px;font-weight: 900;}
+.input--outline {background: transparent;}
+.input--inline {border:1px solid #ccc;}

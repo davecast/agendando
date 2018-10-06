@@ -1,0 +1,84 @@
+.reminders__content {
+    width: calc(100% - 400px);
+    height: calc(100vh - 70px);
+    background: #fff;
+    padding: 15px 15px 0 15px;
+    border-left: 1px solid #e4e3e3;
+}
+.reminders__not__found {
+    border: 1px solid #e4e3e3;
+    width: 100%;
+    height: calc(100% - 15px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+.reminders__container {
+    max-height: 100%;
+    height: 100%;
+}
+.reminders__header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background: #c13234;
+    height: 45px;
+}
+.reminders__header > div {
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-weight: bold;
+    border-right: 1px solid #6d060b;
+}
+.reminders__header > div:last-child {
+    border-right: none;
+}
+.reminders__description,
+.reminder__description  {
+    width: 40%;
+}
+.reminders__date,
+.reminder__date  {
+    width: 20%;
+}
+.reminders__time,
+.reminder__time {
+    width: 20%;
+}
+.reminders__actions,
+.reminder__actions {
+    width: 20%;
+}
+.reminders__list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    height: calc(100% - 45px);
+    overflow: auto;
+}
+.reminder__list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.reminder__list:nth-child(odd) {
+    background: #ececec;
+}
+.reminder__list > div {
+    font-size: 12px;
+    line-height: 18px;
+    padding: 10px 15px;
+}
+.reminder__description {width: 40%;}
+.reminder__date,
+.reminder__time {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.reminder__actions {width: 20;}

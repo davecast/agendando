@@ -1,0 +1,33 @@
+.error__messages {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(255,255,255,.8);
+    z-index: 21;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.error__message {
+    max-width: 980px;
+    margin: 0 auto;
+    width: 90%;
+}
+
+.error__title {
+    height: 40px;
+    background: #222;
+    color: #fff;
+    border: 1px solid #eded;
+    line-height: 40px;
+    padding: 0 15px;
+}
+.error__information {
+    background: #fef;
+    border-bottom: 1px solid #eded;
+    border-left: 1px solid #eded;
+    border-right: 1px solid #eded;
+    padding:15px;
+}

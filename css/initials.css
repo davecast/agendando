@@ -1,0 +1,38 @@
+/*
+** Valores iniciales
+*/
+body {background:#f8f8f8;padding: 0;margin: 0;font-family: 'Montserrat', sans-serif;overflow: hidden;}
+
+body.overflow-none {overflow: hidden;}
+
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+	background-color: white !important;
+	background-image: none !important;
+	color: #495057 !important;
+	box-shadow:0 0 0 30px white inset !important;
+}
+
+* {box-sizing: border-box;}
+
+a,  a:active, a:visited {text-decoration: none;}
+
+h1,h2,h3,h4,h5,h6 {font-family: 'Montserrat', sans-serif;font-weight: 700;}
+
+/*
+** Colores
+*/
+.blanco {color:#fff;}
+.negro {color:#1d1c1c;;}
+.rojo {color:#c13234;}
+.burguer {color:#D68831;}
+.meet {color:#8c191e;}
+.grey {color:#dedede;}
+/*
+** Colores
+*/
+.blanco__back {background:#fff;}
+.negro__back {background:#1d1c1c;;}
+.rojo__back {background:#8C191D;}
+.burguer__back {background:#D68831;}
+.meet__back {background:#8c191e;}
+.grey__back {color:#dedede;}
