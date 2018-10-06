@@ -43,4 +43,21 @@
 
         return $id;
     }
+
+    /*
+    ** INSERT TO DATABASE
+    */
+	function deleteDataBase ($sql) {
+        $conect = conection();
+
+        $result = $conect->query($sql) or die ( "<br>No se puede ejecutar query para eliminar datos". $mysqli->error);
+
+        if ($result === TRUE) {    
+            $conect->close();
+            return true;
+		} else {
+            $conect->close();
+            return "Error {$conect->error}";
+        }
+    }
 ?>

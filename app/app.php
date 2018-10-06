@@ -119,6 +119,11 @@
 				</div>
 			</div>
 			<div class="reminders__content <?php echo "mod-{$mod}"; echo " del-{$del}"; ?>">
+				<div class="reminders__options">
+					<a href="">
+						<i class="fas fa-print"></i>
+					</a>
+				</div>
 				<?php 
 					$sql = "SELECT * FROM reminders WHERE id_user={$_SESSION['id_user']}";
 					$result = selectDataBase($sql);
