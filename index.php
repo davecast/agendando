@@ -1,4 +1,5 @@
 <?php
+
 	include_once 'app/header.php';
 	
 	include_once 'app/components/loader.php';

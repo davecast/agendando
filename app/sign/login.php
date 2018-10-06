@@ -1,6 +1,7 @@
 <?php
     session_start();
     require_once '../functions.php';
+	require_once '../config-file.php';
 
     if(isset($_REQUEST['btnSignIn'])){
         
@@ -31,20 +32,20 @@
 					updateDataBase("UPDATE users SET token='{$_SESSION['token']}' WHERE id_user={$id_user}");
 				}
 
-				header("Location: http://localhost/agendando/index.php");
+				header("Location: {$URL_PATH}index.php");
 			} else {
 				$err = '1';
-				header("Location: http://localhost/agendando/index.php?err={$err}&type=signIn");
+				header("Location: {$URL_PATH}index.php?err={$err}&type=signIn");
 			}
 		} else {
 			$err = '1';
-			header("Location: http://localhost/agendando/index.php?err={$err}&type=signIn");
+			header("Location: {$URL_PATH}index.php?err={$err}&type=signIn");
 		}
 	} else {
 		if(isset($_SESSION['token'])){
-			header("Location: index.php");
+			header("Location: {$URL_PATH}index.php");
 		} else {
-			header("Location: index.php");
+			header("Location: {$URL_PATH}index.php");
 		}
 	}
 

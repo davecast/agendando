@@ -2,6 +2,7 @@
 	include_once 'components/header.php';
 	include_once 'config/conection.php';
 	include_once 'functions.php';
+	include_once 'utilities/utilities.php';
 
 ?>
 
@@ -21,15 +22,16 @@
 				</div>
 				<div class="user__actions">
 					<form id="form-signin" class="form row" action="app/reminders/register.php" method="post" novalidate autocomplete="off">
-						<div class="col--12 m__b input__box">
-							<input class="input input--inline" id="email" name="email" type="email" placeholder="Correo">
-							<span></span>
-						</div>
-						<div class="col--6 m__b input__box input__box--half input__box--first">
+						<div class="col--6 m__b input__box">
 							<input class="input input--inline" id="date" name="date" type="date" placeholder="Fecha">
 							<span></span>
 						</div>
-						<div class="col--6 m__b input__box input__box--half">
+						<?php 
+							if ( isset($_REQUEST) ) {
+								echo $_REQUEST['errDesc'];
+							}
+						?>
+						<div class="col--6 m__b input__box">
 							<input class="input input--inline" type="time" id="time" name="time" min="00:00" max="24:00"  />
 							<span></span>
 						</div>
@@ -45,34 +47,41 @@
 			</div>
 			<div class="reminders__content">
 				<?php 
-					$sql = "SELECT * FROM reminders";
+					$sql = "SELECT * FROM reminders WHERE id_user={$_SESSION['id_user']}";
 					$result = selectDataBase($sql);
 					if ($result->num_rows > 0) {
-						$contentHtml = "<div class='reminders__container'>
-						<ul class='reminders__list'>
-						<div class='reminders__header'>
-						<div class='reminders__description'>Descripción</div>
+						$contentHtml .= "<div class='reminders__container'>
+							<ul class='reminders__list'>
+								<div class='reminders__header'>
+									<div class='reminders__description'>Descripción</div>
 									<div class='reminders__date'>Fecha</div>
 									<div class='reminders__time'>Hora</div>
 									<div class='reminders__actions'>Acciones</div>
-								</div>
-								<li class='reminder__list'>
-								<div class='reminder__description'>
-										Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, laudantium quas? Distinctio quo totam ut quis adipisci sequi nostrum eius?
-									</div>
-									<div class='reminder__date'>07/10/18</div>
-									<div class='reminder__time'>19:00</div>
-									<div class='reminder__actions'>
-										<div class='reminder__modify'>
-											<i class='fas fa-edit'></i>
-										</div>
-										<div class='reminder__delete'>
-											<i class='fas fa-trash-alt'></i>
-										</div>
-										</div>
-								</li>
-								</ul>
 								</div>";
+						while ($fila=mysqli_fetch_array($result)) {
+
+							$dateTranspile = transpileDate($fila['fecha']);
+							$timeTranspile = transpileTime($fila['time']);
+
+							$contentHtml .= "<li class='reminder__list'>
+									<div class='reminder__description'>
+										{$fila['description']}	
+									</div>
+									<div class='reminder__date'>{$dateTranspile}</div>
+									<div class='reminder__time'>{$timeTranspile}</div>
+									<div class='reminder__actions'>
+										<a href='app/modify/modify.php?id={$fila['rec_id']}' class='reminder__modify'>
+											<i class='fas fa-edit'></i>
+										</a>
+										<a href='app/delete/delete.php?id={$fila['rec_id']}' class='reminder__delete'>
+											<i class='fas fa-trash-alt'></i>
+										</a>
+									</div>
+								</li>";
+						}
+
+						$contentHtml .= "</ul>
+						</div>";
 						echo $contentHtml;
 					} else {
 						$contentHtml = "<div class='reminders__not__found'>

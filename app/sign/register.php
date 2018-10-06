@@ -1,6 +1,7 @@
 <?php 
     session_start();
     require_once '../functions.php';
+    require_once '../config-file.php';
 
     if (isset($_REQUEST['btnSignUp'])) {
         $username = $_REQUEST['registerUsername'];
@@ -17,7 +18,7 @@
                 
                 if ($result->num_rows > 0) {
                     $err = '3';
-                    header("Location: http://localhost/agendando/index.php?err={$err}&type=signUp");
+                    header("Location: {$URL_PATH}index.php?err={$err}&type=signUp");
                 } else {
                     
                     $pass = password_hash($pass, PASSWORD_DEFAULT);
@@ -31,11 +32,11 @@
                     $_SESSION['token'] = $token;
                     $_SESSION['avatar'] = $avatar;
 
-                    header("Location: http://localhost/agendando/index.php");
+                    header("Location: {$URL_PATH}index.php");
                 }
             } else {
                 $err = '2';
-                header("Location: http://localhost/agendando/index.php?err={$err}&type=signUp");
+                header("Location: {$URL_PATH}index.php?err={$err}&type=signUp");
             }
         
     }
