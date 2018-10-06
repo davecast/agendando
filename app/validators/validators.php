@@ -28,7 +28,7 @@
         return $validate;
     }
     function validateTime ($time) {
-        return preg_match("/^(?:2[0-3]|[01][0-9]):[0-5][0-9]$/", $time);
+        return preg_match("/(2[0-3]|[0][0-9]|1[0-9]):([0-5][0-9])/", $time);
     }
     function validateDescription ($str) {
         return preg_match("/^[a-z0-9ñÑáéíóúÁÉÍÓÚ \.\,]*$/i", $str );

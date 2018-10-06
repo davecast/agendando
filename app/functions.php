@@ -10,7 +10,7 @@
         
 		if ($conect->query($sql) === TRUE) {    
             $conect->close();
-            return 'Actuaizado el dato';
+            return true;
 		} else {
             $conect->close();
             return "Error {$conect->error}";

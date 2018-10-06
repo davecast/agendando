@@ -1,5 +1,6 @@
 <?php 
 session_start();
+include_once "../functions.php";
 include_once "../validators/validators.php";
 include_once "../config-file.php";
 
@@ -12,9 +13,10 @@ if(isset($_REQUEST['addReminder'])){
         $dateIsset = false;
         if (validateDate($_REQUEST['date'])) {
             $date = $_REQUEST['date'];
+            $url .="&date={$date}";
         } else {
             $err = 2;
-            $dateValidate = true;
+            $url .= "&errDate={$err}";
         }
     } else {
         $err = 1;
@@ -24,11 +26,11 @@ if(isset($_REQUEST['addReminder'])){
     if ( isset($_REQUEST['time']) ) {
         $timeIsset = false;
         if (validateTime($_REQUEST['time'])) {
-
             $time = $_REQUEST['time'];
+            $url .= "&time={$time}";
         } else {
             $err = 2;
-            $timeValidate = true;
+            $url .= "&errTime={$err}";
         }
     } else {
         $err = 1;
@@ -39,9 +41,10 @@ if(isset($_REQUEST['addReminder'])){
         $descriptionIsset = false;
         if (validateDescription($_REQUEST['description'])) {
             $description = $_REQUEST['description'];
+            $url .= "&desc={$description}";
         } else {
             $err = 2;
-            $descriptionValidate = true;
+            $url .= "&errTime={$err}";
         }
     } else {
         $err = 1;
@@ -49,7 +52,12 @@ if(isset($_REQUEST['addReminder'])){
     }
 
     if ($err == 0) {
-        echo "Logrado no hay errores";
+        $id_user = $_SESSION['id_user'];
+
+        $sql = "INSERT INTO reminders (rec_id, description, fecha, time, id_user) VALUES (NULL, '$description', '$date', '$time', '$id_user')";
+        $result = insertDataBase($sql);
+        
+        header("Location: {$URL_PATH}index.php?&success=2");
     } else {
         echo $url;
         header("Location: {$url}");

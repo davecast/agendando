@@ -5,6 +5,12 @@
     padding: 15px 15px 0 15px;
     border-left: 1px solid #e4e3e3;
 }
+.reminders__content.mod-true, .reminders__content.del-true  {
+    display:none;
+    overflow: hidden;
+    height: 0;
+    width: 0;
+}
 .reminders__not__found {
     border: 1px solid #e4e3e3;
     width: 100%;
