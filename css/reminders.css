@@ -12,7 +12,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    display: none;
 }
 .reminders__container {
     max-height: 100%;
@@ -57,7 +56,7 @@
     padding: 0;
     margin: 0;
     list-style: none;
-    height: calc(100% - 45px);
+    height: 100%;
     overflow: auto;
 }
 .reminder__list {
@@ -71,14 +70,47 @@
 .reminder__list > div {
     font-size: 12px;
     line-height: 18px;
+}
+.reminder__description {
+    width: 40%;
     padding: 10px 15px;
 }
-.reminder__description {width: 40%;}
 .reminder__date,
 .reminder__time {
+    padding: 10px 15px;
     width: 20%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.reminder__actions {width: 20;}
+.reminder__actions {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60px;
+}
+.reminder__modify,
+.reminder__delete {
+    width: 35px;
+    height: 35px;
+    border: 3px solid #c13234;
+    border-radius: 50%;
+    color: #c13234;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    cursor: pointer;
+}
+.reminder__modify:hover,
+.reminder__delete:hover {
+    background: #c13234;
+    color: #fff;
+}
+.reminder__modify:active,
+.reminder__delete:active {
+    background: #6d060b;
+}
+.reminder__modify {}
+.reminder__delete {margin-left: 15px;}

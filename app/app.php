@@ -1,5 +1,8 @@
 <?php 
 	include_once 'components/header.php';
+	include_once 'config/conection.php';
+	include_once 'functions.php';
+
 ?>
 
 <section class="section">
@@ -27,7 +30,7 @@
 							<span></span>
 						</div>
 						<div class="col--6 m__b input__box input__box--half">
-							<input class="input input--inline" id="time" name="time" type="text" placeholder="Hora">
+							<input class="input input--inline" type="time" id="time" name="time" min="00:00" max="24:00"  />
 							<span></span>
 						</div>
 						<div class="col--12 m__b input__box">
@@ -41,245 +44,47 @@
 				</div>
 			</div>
 			<div class="reminders__content">
-				<div class="reminders__not__found">
-					No se hacreado ningun recordatorio.
-				</div>
-				<div class="reminders__container">
-					<div class="reminders__header">
-						<div class="reminders__description">Descripción</div>
-						<div class="reminders__date">Fecha</div>
-						<div class="reminders__time">Hora</div>
-						<div class="reminders__actions">Acciones</div>
-					</div>
-					<ul class="reminders__list">
-						<li class="reminder__list">
-							<div class="reminder__description">
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, laudantium quas? Distinctio quo totam ut quis adipisci sequi nostrum eius?
-							</div>
-							<div class="reminder__date">07/10/18</div>
-							<div class="reminder__time">19:00</div>
-							<div class="reminder__actions">
-								<div class="reminder__modify">
-
+				<?php 
+					$sql = "SELECT * FROM reminders";
+					$result = selectDataBase($sql);
+					if ($result->num_rows > 0) {
+						$contentHtml = "<div class='reminders__container'>
+						<ul class='reminders__list'>
+						<div class='reminders__header'>
+						<div class='reminders__description'>Descripción</div>
+									<div class='reminders__date'>Fecha</div>
+									<div class='reminders__time'>Hora</div>
+									<div class='reminders__actions'>Acciones</div>
 								</div>
-								<div class="reminder__delete">
-
-								</div>
-							</div>
-						</li>
-						<li class="reminder__list">
-							<div class="reminder__description">
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, laudantium quas? Distinctio quo totam ut quis adipisci sequi nostrum eius?
-							</div>
-							<div class="reminder__date">07/10/18</div>
-							<div class="reminder__time">19:00</div>
-							<div class="reminder__actions">
-								<div class="reminder__modify">
-
-								</div>
-								<div class="reminder__delete">
-
-								</div>
-							</div>
-						</li>
-						<li class="reminder__list">
-							<div class="reminder__description">
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, laudantium quas? Distinctio quo totam ut quis adipisci sequi nostrum eius?
-							</div>
-							<div class="reminder__date">07/10/18</div>
-							<div class="reminder__time">19:00</div>
-							<div class="reminder__actions">
-								<div class="reminder__modify">
-
-								</div>
-								<div class="reminder__delete">
-
-								</div>
-							</div>
-						</li>
-						<li class="reminder__list">
-							<div class="reminder__description">
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, laudantium quas? Distinctio quo totam ut quis adipisci sequi nostrum eius?
-							</div>
-							<div class="reminder__date">07/10/18</div>
-							<div class="reminder__time">19:00</div>
-							<div class="reminder__actions">
-								<div class="reminder__modify">
-
-								</div>
-								<div class="reminder__delete">
-
-								</div>
-							</div>
-						</li>
-						<li class="reminder__list">
-							<div class="reminder__description">
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, laudantium quas? Distinctio quo totam ut quis adipisci sequi nostrum eius?
-							</div>
-							<div class="reminder__date">07/10/18</div>
-							<div class="reminder__time">19:00</div>
-							<div class="reminder__actions">
-								<div class="reminder__modify">
-
-								</div>
-								<div class="reminder__delete">
-
-								</div>
-							</div>
-						</li>
-						<li class="reminder__list">
-							<div class="reminder__description">
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, laudantium quas? Distinctio quo totam ut quis adipisci sequi nostrum eius?
-							</div>
-							<div class="reminder__date">07/10/18</div>
-							<div class="reminder__time">19:00</div>
-							<div class="reminder__actions">
-								<div class="reminder__modify">
-
-								</div>
-								<div class="reminder__delete">
-
-								</div>
-							</div>
-						</li>
-						<li class="reminder__list">
-							<div class="reminder__description">
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, laudantium quas? Distinctio quo totam ut quis adipisci sequi nostrum eius?
-							</div>
-							<div class="reminder__date">07/10/18</div>
-							<div class="reminder__time">19:00</div>
-							<div class="reminder__actions">
-								<div class="reminder__modify">
-
-								</div>
-								<div class="reminder__delete">
-
-								</div>
-							</div>
-						</li>
-						<li class="reminder__list">
-							<div class="reminder__description">
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, laudantium quas? Distinctio quo totam ut quis adipisci sequi nostrum eius?
-							</div>
-							<div class="reminder__date">07/10/18</div>
-							<div class="reminder__time">19:00</div>
-							<div class="reminder__actions">
-								<div class="reminder__modify">
-
-								</div>
-								<div class="reminder__delete">
-
-								</div>
-							</div>
-						</li>
-						<li class="reminder__list">
-							<div class="reminder__description">
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, laudantium quas? Distinctio quo totam ut quis adipisci sequi nostrum eius?
-							</div>
-							<div class="reminder__date">07/10/18</div>
-							<div class="reminder__time">19:00</div>
-							<div class="reminder__actions">
-								<div class="reminder__modify">
-
-								</div>
-								<div class="reminder__delete">
-
-								</div>
-							</div>
-						</li>
-						<li class="reminder__list">
-							<div class="reminder__description">
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, laudantium quas? Distinctio quo totam ut quis adipisci sequi nostrum eius?
-							</div>
-							<div class="reminder__date">07/10/18</div>
-							<div class="reminder__time">19:00</div>
-							<div class="reminder__actions">
-								<div class="reminder__modify">
-
-								</div>
-								<div class="reminder__delete">
-
-								</div>
-							</div>
-						</li>
-						<li class="reminder__list">
-							<div class="reminder__description">
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, laudantium quas? Distinctio quo totam ut quis adipisci sequi nostrum eius?
-							</div>
-							<div class="reminder__date">07/10/18</div>
-							<div class="reminder__time">19:00</div>
-							<div class="reminder__actions">
-								<div class="reminder__modify">
-
-								</div>
-								<div class="reminder__delete">
-
-								</div>
-							</div>
-						</li>
-						<li class="reminder__list">
-							<div class="reminder__description">
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, laudantium quas? Distinctio quo totam ut quis adipisci sequi nostrum eius?
-							</div>
-							<div class="reminder__date">07/10/18</div>
-							<div class="reminder__time">19:00</div>
-							<div class="reminder__actions">
-								<div class="reminder__modify">
-
-								</div>
-								<div class="reminder__delete">
-
-								</div>
-							</div>
-						</li>
-						<li class="reminder__list">
-							<div class="reminder__description">
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, laudantium quas? Distinctio quo totam ut quis adipisci sequi nostrum eius?
-							</div>
-							<div class="reminder__date">07/10/18</div>
-							<div class="reminder__time">19:00</div>
-							<div class="reminder__actions">
-								<div class="reminder__modify">
-
-								</div>
-								<div class="reminder__delete">
-
-								</div>
-							</div>
-						</li>
-						<li class="reminder__list">
-							<div class="reminder__description">
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, laudantium quas? Distinctio quo totam ut quis adipisci sequi nostrum eius?
-							</div>
-							<div class="reminder__date">07/10/18</div>
-							<div class="reminder__time">19:00</div>
-							<div class="reminder__actions">
-								<div class="reminder__modify">
-									<i class="fas fa-edit"></i>
-								</div>
-								<div class="reminder__delete">
-									<i class="fas fa-trash-alt"></i>
-								</div>
-							</div>
-						</li>
-						<li class="reminder__list">
-							<div class="reminder__description">
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, laudantium quas? Distinctio quo totam ut quis adipisci sequi nostrum eius?
-							</div>
-							<div class="reminder__date">07/10/18</div>
-							<div class="reminder__time">19:00</div>
-							<div class="reminder__actions">
-								<div class="reminder__modify">
-
-								</div>
-								<div class="reminder__delete">
-
-								</div>
-							</div>
-						</li>
-					</ul>
-				</div>
+								<li class='reminder__list'>
+								<div class='reminder__description'>
+										Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, laudantium quas? Distinctio quo totam ut quis adipisci sequi nostrum eius?
+									</div>
+									<div class='reminder__date'>07/10/18</div>
+									<div class='reminder__time'>19:00</div>
+									<div class='reminder__actions'>
+										<div class='reminder__modify'>
+											<i class='fas fa-edit'></i>
+										</div>
+										<div class='reminder__delete'>
+											<i class='fas fa-trash-alt'></i>
+										</div>
+										</div>
+								</li>
+								</ul>
+								</div>";
+						echo $contentHtml;
+					} else {
+						$contentHtml = "<div class='reminders__not__found'>
+							No se hacreado ningun recordatorio.
+							</div>";
+						echo $contentHtml;
+					}
+					?>
+				
+				
 			</div>
 		</div>
 	</div>	
 </section>
+																					
