@@ -8,7 +8,7 @@
 	
 	$actionUrl = "app/reminders/register.php";
 	$btnText = "Guardar";
-	$cancelUrl = "{$URL_PATH}index.php";
+	$rootUrl = "{$URL_PATH}index.php";
 
 	if ( isset($_REQUEST['mod']) ) {
 		$mod = $_REQUEST['mod'];
@@ -110,7 +110,7 @@
 						<?php 
 							if ( isset($_REQUEST['mod']) or isset($_REQUEST['del']) ) {
 								$btnCancel = "<div class='col--12 t__c m__t'>
-								<a  href='{$cancelUrl}' class='btn btn--rojo btn--sm btn--normal--font'>CANCELAR</a>
+								<a  href='{$rootUrl}' class='btn btn--rojo btn--sm btn--normal--font'>CANCELAR</a>
 							</div>";
 								echo $btnCancel;
 							}
@@ -120,7 +120,7 @@
 			</div>
 			<div class="reminders__content <?php echo "mod-{$mod}"; echo " del-{$del}"; ?>">
 				<div class="reminders__options">
-					<a href="">
+					<a href="app/report.php?type=full&id_user=<?php echo $_SESSION['id_user']; ?>">
 						<i class="fas fa-print"></i>
 					</a>
 				</div>

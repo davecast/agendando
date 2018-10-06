@@ -22,8 +22,10 @@
     */
 	function selectDataBase ($sql) {
         $conect = conection();
-
-        $result = $conect->query($sql) or die ( "<br>No se puede ejecutar query para seleccionar datos ". $mysqli->error );
+        $conect->set_charset("utf8");
+        
+        $error = $conect->error;
+        $result = $conect->query($sql) or die ( "<br>No se puede ejecutar query para seleccionar datos {$error}");
 
         $conect->close();
         return $result;
