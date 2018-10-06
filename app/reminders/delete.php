@@ -5,7 +5,14 @@
 	require_once '../config-file.php';
     
     if ( isset($_REQUEST['delete']) ) {
-        
+
+        $rec_id = $_REQUEST['id'];
+        $sql = "DELETE from reminders where rec_id='$rec_id'";
+        $delete = deleteDataBase($sql);
+
+        if ($delete) {
+            header("Location: {$URL_PATH}index.php?success=4");
+        }
         
         
     } else {    
