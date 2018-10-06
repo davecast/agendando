@@ -33,4 +33,13 @@
     function validateDescription ($str) {
         return preg_match("/^[a-z0-9ñÑáéíóúÁÉÍÓÚ \.\,]*$/i", $str );
     }
+    function validateEmail ($email) {
+        return preg_match("^([a-z0-9_-])+([\.a-z0-9_-])*@([a-z0-9-])+(\.[a-z0-9-]+)*\.([a-z]{2,6})$", $email);
+    }
+    function validateAlfaNumeric ($text) {
+        return preg_match("/^[a-zñÑ0-9]*$/i", $text );
+    }
+    function validateAlfaEsp ($text) {
+       return preg_match("/^[a-zñÑáéíóúÁÉÍÓÚ ]*$/i", $text );
+    }
 ?>

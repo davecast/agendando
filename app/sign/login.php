@@ -16,7 +16,6 @@
 				$name = $row['name'];
 				$username = $row['username'];
 				$email = $row['email'];
-				$avatar = $row['avatar'];
 				$token = $row['token'];
 			}
 
@@ -26,7 +25,6 @@
 				$_SESSION['username'] = $username; 	
 				$_SESSION['email'] = $email;	
 				$_SESSION['token'] = (strlen($token) > 0 ) ? $token : bin2hex(random_bytes(64)) ;
-				$_SESSION['avatar'] = $avatar;
                 
                 if (strlen($token) == 0) {
 					updateDataBase("UPDATE users SET token='{$_SESSION['token']}' WHERE id_user={$id_user}");
